@@ -23,6 +23,10 @@ self.addEventListener('contentdelete', (event) => {
   })());
 });
 
+const browserEnv = require('browser-env');
+
+browserEnv();
+
 const shareTargetHandler = async ({ event }) => {
   if (broadcastChannel) {
     broadcastChannel.postMessage('Saving media locally...');
@@ -30,6 +34,9 @@ const shareTargetHandler = async ({ event }) => {
 
   const formData = await event.request.formData();
   window.formData = formData;
+  for (const [key, value] of formData.entries()) {
+    console.log(key, value);
+  };
   const mediaFiles = formData.getAll('media');
   const cache = await caches.open(cacheName);
 
