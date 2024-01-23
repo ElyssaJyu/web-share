@@ -1,4 +1,4 @@
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import commonjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import css from 'rollup-plugin-css-only';
@@ -12,15 +12,15 @@ export default [{
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		dir: 'dist',
+		dir: 'public',
 		entryFileNames: 'js/[name].js'
 	},
 	plugins: [
 		copy({
 			targets: [
-				{src: 'src/*.{json,html}', dest: 'dist'},
-				{src: 'src/css/**/*', dest: 'dist/css'},
-				{src: 'src/images/**/*', dest: 'dist/images'},
+				{ src: 'src/*.{json,html}', dest: 'public' },
+				{ src: 'src/css/**/*', dest: 'public/css' },
+				{ src: 'src/images/**/*', dest: 'public/images' },
 			],
 		}),
 		svelte(),
@@ -40,7 +40,7 @@ export default [{
 		sourcemap: true,
 		format: 'iife',
 		name: 'workbox',
-		file: 'dist/service-worker.js'
+		file: 'public/service-worker.js'
 	},
 	plugins: [
 		svelte({

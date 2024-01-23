@@ -24,12 +24,12 @@
     "workbox-strategies": "^6.2.4"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf public",
     "deploy": "run-s build firebase-deploy",
     "firebase-deploy": "firebase deploy --only hosting",
     "rollup": "rollup -c",
     "serve": "firebase serve --only hosting",
     "workbox": "workbox injectManifest workbox-config.js",
-    "build": "run-s clean rollup workbox --output dist"
+    "build": "run-s clean rollup workbox"
   }
 }
