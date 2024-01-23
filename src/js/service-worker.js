@@ -41,7 +41,6 @@ const shareTargetHandler = async ({ event }) => {
   }
 
   //window.formData = formData;
-  console.log("formData", formData);
   for (const [key, value] of formData.entries()) {
     console.log("entries", key, value);
   };
