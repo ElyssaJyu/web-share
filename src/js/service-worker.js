@@ -23,9 +23,9 @@ self.addEventListener('contentdelete', (event) => {
   })());
 });
 
-const browserEnv = require('browser-env');
+// import browserEnv from 'browser-env';
 
-browserEnv();
+// browserEnv();
 
 const shareTargetHandler = async ({ event }) => {
   if (broadcastChannel) {
