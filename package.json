@@ -24,7 +24,6 @@
     "workbox-strategies": "^6.2.4"
   },
   "scripts": {
-    //"build": "run-s clean rollup workbox",
     "clean": "rimraf dist",
     "deploy": "run-s build firebase-deploy",
     "firebase-deploy": "firebase deploy --only hosting",
