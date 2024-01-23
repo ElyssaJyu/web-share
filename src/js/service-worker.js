@@ -1,13 +1,13 @@
-import {CacheOnly} from 'workbox-strategies';
-import {clientsClaim, skipWaiting} from 'workbox-core';
-import {precacheAndRoute} from 'workbox-precaching';
-import {RangeRequestsPlugin} from 'workbox-range-requests';
-import {registerRoute} from 'workbox-routing';
+import { CacheOnly } from 'workbox-strategies';
+import { clientsClaim, skipWaiting } from 'workbox-core';
+import { precacheAndRoute } from 'workbox-precaching';
+import { RangeRequestsPlugin } from 'workbox-range-requests';
+import { registerRoute } from 'workbox-routing';
 
-import {cacheName, channelName, urlPrefix} from './constants';
-import {mimeRoute as audioRoute} from '../svelte/routes/Audio.svelte';
-import {mimeRoute as imagesRoute} from '../svelte/routes/Images.svelte';
-import {mimeRoute as videosRoute} from '../svelte/routes/Videos.svelte';
+import { cacheName, channelName, urlPrefix } from './constants';
+import { mimeRoute as audioRoute } from '../svelte/routes/Audio.svelte';
+import { mimeRoute as imagesRoute } from '../svelte/routes/Images.svelte';
+import { mimeRoute as videosRoute } from '../svelte/routes/Videos.svelte';
 
 const broadcastChannel = 'BroadcastChannel' in self ? new BroadcastChannel(channelName) : null;
 
@@ -23,12 +23,13 @@ self.addEventListener('contentdelete', (event) => {
   })());
 });
 
-const shareTargetHandler = async ({event}) => {
+const shareTargetHandler = async ({ event }) => {
   if (broadcastChannel) {
     broadcastChannel.postMessage('Saving media locally...');
   }
 
   const formData = await event.request.formData();
+  window.formData = formData;
   const mediaFiles = formData.getAll('media');
   const cache = await caches.open(cacheName);
 
@@ -62,7 +63,7 @@ const shareTargetHandler = async ({event}) => {
   ].find((route) => mediaFiles[0].type.startsWith(route.mimePrefix));
 
   const redirectionUrl = routeToRedirectTo ? `/#${routeToRedirectTo.href}` : '/';
-  
+
   // After the POST succeeds, redirect to the main page.
   return Response.redirect(redirectionUrl, 303);
 };
