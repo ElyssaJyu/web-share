@@ -31,6 +31,6 @@
     "rollup": "rollup -c",
     "serve": "firebase serve --only hosting",
     "workbox": "workbox injectManifest workbox-config.js",
-    "build": "[my-framework] build --output public"
+    "build": "rollup -c --environment BUILD:production  --output public"
   }
 }
