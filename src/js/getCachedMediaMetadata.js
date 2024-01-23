@@ -14,7 +14,7 @@
  * limitations under the License.
  **/
 
-import {cacheName} from './constants';
+import { cacheName } from './constants';
 
 async function _getCachedMediaMetadata() {
   const cache = await caches.open(cacheName);
@@ -35,7 +35,7 @@ export const cachedMediaMetadataPromise = _getCachedMediaMetadata();
 
 export async function getCachedMediaMetadata(contentTypePrefix) {
   const cachedMetadata = await cachedMediaMetadataPromise;
-  return cachedMetadata.filter((metadata) =>  metadata.contentType.startsWith(contentTypePrefix));
+  return cachedMetadata.filter((metadata) => metadata.contentType.startsWith(contentTypePrefix));
 }
 
 export async function getCachedMediaMetadataForURL(url) {

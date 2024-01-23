@@ -32,11 +32,27 @@ const shareTargetHandler = async ({ event }) => {
     broadcastChannel.postMessage('Saving media locally...');
   }
 
-  const formData = await event.request.formData();
+
+  //event.preventDefault()
+  try {
+    const formData = await event.request.formData();
+  } catch (e) {
+    console.log("err", e);
+  }
+
   //window.formData = formData;
+  console.log("formData", formData);
   for (const [key, value] of formData.entries()) {
-    console.log(key, value);
+    console.log("entries", key, value);
   };
+  for (const value of formData.values()) {
+    console.log("values", value);
+  }
+
+  const title = formData.getAll('title');
+  console.log("title", title);
+  const url = formData.getAll('url');
+  console.log("url", url);
   const mediaFiles = formData.getAll('media');
   const cache = await caches.open(cacheName);
 
