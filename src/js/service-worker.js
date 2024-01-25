@@ -38,7 +38,7 @@ const shareTargetHandler = async ({ event }) => {
   try {
     const text = await cloneRequest.text();
     console.log("text", text);
-    const formData = await cloneRequest.formData();
+    const formData = await event.request.formData();
     for (const [key, value] of formData.entries()) {
       console.log("entries", key, value);
     };
