@@ -32,7 +32,7 @@
       "url": "mapped_url",
       "files": [
         {
-          "name": "media",
+          "name": "mapped_files",
           "accept": [
             "audio/*",
             "image/*",
