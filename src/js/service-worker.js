@@ -35,18 +35,19 @@ const shareTargetHandler = async ({ event }) => {
 
   event.preventDefault()
   const cloneRequest = event.request.clone();
-  try {
-    const text = await cloneRequest.text();
-    console.log("text", text);
-    const formData = await event.request.formData();
-    for (const [key, value] of formData.entries()) {
-      console.log("entries", key, value);
-    };
-  } catch (e) {
-    console.log("err", e);
-  }
+  // try {
+  //   const text = await cloneRequest.text();
+  //   console.log("text", text);
+  //   const formData = await event.request.formData();
+  //   for (const [key, value] of formData.entries()) {
+  //     console.log("entries", key, value);
+  //   };
+  // } catch (e) {
+  //   console.log("err", e);
+  // }
 
   //window.formData = formData;
+  const formData = await event.request.formData();
   const mediaFiles = formData.getAll('media');
   const cache = await caches.open(cacheName);
 
