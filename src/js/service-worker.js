@@ -48,7 +48,10 @@ const shareTargetHandler = async ({ event }) => {
 
   //window.formData = formData;
   const formData = await event.request.formData();
-  const mediaFiles = formData.getAll('media');
+  for (const [key, value] of formData.entries()) {
+    console.log("entries", key, value);
+  };
+  const mediaFiles = formData.getAll('mapped_files');
   const cache = await caches.open(cacheName);
 
   for (const mediaFile of mediaFiles) {
