@@ -3,7 +3,7 @@
   "description": "An offline-first PWA that acts as a share source and target.",
   "display": "standalone",
   "edge_side_panel": {
-   "preferred_width": 800
+   "preferred_width": 450
  },
   "icons": [
     {
