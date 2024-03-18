@@ -2,6 +2,9 @@
   "background_color": "#ECEFF1",
   "description": "An offline-first PWA that acts as a share source and target.",
   "display": "standalone",
+  "edge_side_panel": {
+   "preferred_width": 800
+ },
   "icons": [
     {
       "src": "images/splash.jpg",
